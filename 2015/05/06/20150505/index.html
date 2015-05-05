@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | Star Phoenix</title>
+  <title>20150505 | Star Phoenix</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -86,7 +86,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -238,55 +238,63 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/05/06/20150505/">20150505</a></h4>
-                            
-                            <p><time datetime="2015-05-05T16:09:55.000Z"><a href="/2015/05/06/20150505/">2015-05-06</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/04/29/20150430/">20150430</a></h4>
-                            
-                            <p><time datetime="2015-04-29T15:22:14.000Z"><a href="/2015/04/29/20150430/">2015-04-29</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/04/29/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2015-04-29T14:06:42.877Z"><a href="/2015/04/29/hello-world/">2015-04-29</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2015-05-05T16:09:55.000Z" itemprop="datePublished">
+          2015-05-06
+      </time>
+    
+    
+    | 
+    <a href='/tags/life/'>life</a>,
+    
+    <a href='/tags/study/'>study</a>
+    
+    
+</span>
+                <h1>20150505</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="关于这两天的一点感悟">关于这两天的一点感悟</h2><p>前面几天是五一假期，由于武汉的下雨天专门挑周末和假期，这次也不例外，并且本来也没有安排什么出行计划，也就这么在学校呆着了。<br>有两天没有锻炼，安静的做了一整天。身体很累，精神也很低迷。在细细感觉自己的身体和精神状态时，发现这两者之间确实如他人所说有着一种很明显的对应关系。每天适当的活动身体，反而精神状态会更好而不觉得疲倦。<br>因此，请坚持下来，为了一个好的身体，也为了一个好的思维能力。<br>同时，也想到了曾经跟叶聊天时说到的这样一件事：自己做事效率很低的时候，一般都是自己身体很累或者精神状态很不好的时候。这个时候从内心里就有一种声音在说既然这么累学习效率这么低就做点轻松愉快的事情吧，看个电影逛个知乎吧。慢慢的时间就这么耗去了。但是这些所谓的轻松愉快的事让你的身体得到了充足的休息吗，在这些事之后你的学习效率提高了吗？答案肯定的是没有。我们讨论的结论就是，在感觉到累的时候，不管是身体还是心灵，只要是影响到了自己的学习或工作状态，那么这时最应该做的就是休息，完全的休息。睡觉或者打拳（叶的太极），或者冥想（适合自己才行）等等。等休息好了自然学习效率就会提起来。</p>
+<p>另外一个就是昨天持续到今天的一件事。昨天在计算反演结果的时候，发现168<em>228</em>10的矩阵已经超出了32G的内存，计算一下的话，就按照单精度数据来说，核矩阵的大小为（168$\times$228）$\times$（168$\times$228$\times$10）$\times$8 byte，归算一下的话，大概相当于109Gb，好庞大的数据量，导致反演算不了。因此不得不想办法来搞定这个问题，首先是等效存储，只适用于观测数据与规则剖分单元完全对应，并且没有地形起伏的情况。昨天先是在正演程序中得到的验证，计算的结果与不采用等效存储计算的结果一致。然后今天将建立等效核矩阵和采用该等效核矩阵做矩阵与向量乘法的程序加入到反演程序中来。<br>然后是，可以顺利计算，但是结果出错了。找啊找啊，一直怀疑的是反演部分以及该等效矩阵乘法部分的问题，但是检查了好多遍都没有找到根源在哪儿。后来一步步的导出计算结果，发现第一次乘积就不对，然后仔细一下，是在核函数矩阵计算的那一步，直接从正演里面copy进来后，没有修改参量，因为反演的计算为了直接求取磁化率，其中的单位物性设置的是 1*T0/mu，但是正演的里面这一项是1，结果找了一个下午。白白浪费了时间。<br>以后在遇到这种问题的时候，不要想当然的就把错误归因到反演函数上去，确实这个部分因为涉及的东西太多改进的时候可能考虑不完全会导致出错，但是这次想说的是，当出现问题的时候，应该从程序的开始一步步的考虑是否有错误出现的可能。而不是一味的在自己想当然的点上寻找从而无谓的花费时间。提到这里也想起了另一个类似的问题，在处理数据的时候，一定一定要从数据的来源开始弄起，仔细了解数据的各方面，并且要记录所做处理每一步所用的参数和方法。不要等到最后的时候结果都有了发现数据有问题，到时候结果都有了但却都是无用功。勿谓言之不预也，请记住并在以后的学习中生活中时刻警醒自己，因为真的开始的时候方向错了，整个过程都就没有了意义。</p>
+<p>记于 2015年5月6日 00点38分</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>$$K_{now}^{forever}$$</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2015/04/29/20150430/">
+        20150430 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+ <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'kiciollo';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
