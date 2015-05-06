@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>20150505 | Star Phoenix</title>
+  <title>The historical development of the magnetic method in exploration(Nabighian et al., 2005) | Star Phoenix</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -245,7 +245,7 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2015-05-05T16:09:55.000Z" itemprop="datePublished">
+      <time datetime="2015-05-06T13:50:55.000Z" itemprop="datePublished">
           2015-05-06
       </time>
     
@@ -257,26 +257,26 @@
     
     
 </span>
-                <h1>20150505</h1>
+                <h1>The historical development of the magnetic method in exploration(Nabighian et al., 2005)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="关于这两天的一点感悟">关于这两天的一点感悟</h2><p>前面几天是五一假期，由于武汉的下雨天专门挑周末和假期，这次也不例外，并且本来也没有安排什么出行计划，也就这么在学校呆着了。<br>有两天没有锻炼，安静的做了一整天。身体很累，精神也很低迷。在细细感觉自己的身体和精神状态时，发现这两者之间确实如他人所说有着一种很明显的对应关系。每天适当的活动身体，反而精神状态会更好而不觉得疲倦。<br>因此，请坚持下来，为了一个好的身体，也为了一个好的思维能力。<br>同时，也想到了曾经跟叶聊天时说到的这样一件事：自己做事效率很低的时候，一般都是自己身体很累或者精神状态很不好的时候。这个时候从内心里就有一种声音在说既然这么累学习效率这么低就做点轻松愉快的事情吧，看个电影逛个知乎吧。慢慢的时间就这么耗去了。但是这些所谓的轻松愉快的事让你的身体得到了充足的休息吗，在这些事之后你的学习效率提高了吗？答案肯定的是没有。我们讨论的结论就是，在感觉到累的时候，不管是身体还是心灵，只要是影响到了自己的学习或工作状态，那么这时最应该做的就是休息，完全的休息。睡觉或者打拳（叶的太极），或者冥想（适合自己才行）等等。等休息好了自然学习效率就会提起来。</p>
-<p>另外一个就是昨天持续到今天的一件事。昨天在计算反演结果的时候，发现168$\times$228$\times$10的矩阵已经超出了32G的内存，计算一下的话，就按照单精度数据来说，核矩阵的大小为（168$\times$228）$\times$（168$\times$228$\times$10）$\times$8 byte，归算一下大概相当于109Gb，好庞大的数据量，导致反演算不了。因此不得不想办法来搞定这个问题，首先是等效存储，只适用于观测数据与规则剖分单元完全对应，并且没有地形起伏的情况。昨天先是在正演程序中得到的验证，计算的结果与不采用等效存储计算的结果一致。然后今天将建立等效核矩阵和采用该等效核矩阵做矩阵与向量乘法的程序加入到反演程序中来。<br>然后是，可以顺利计算，但是结果出错了。找啊找啊，一直怀疑的是反演部分以及该等效矩阵乘法部分的问题，但是检查了好多遍都没有找到根源在哪儿。后来一步步的导出计算结果，发现第一次乘积就不对，然后仔细一下，是在核函数矩阵计算的那一步，直接从正演里面copy进来后，没有修改参量，因为反演的计算为了直接求取磁化率，其中的单位物性设置的是 1*T0/mu，但是正演的里面这一项是1，结果找了一个下午。白白浪费了时间。<br>以后在遇到这种问题的时候，不要想当然的就把错误归因到反演函数上去，确实这个部分因为涉及的东西太多改进的时候可能考虑不完全会导致出错，但是这次想说的是，当出现问题的时候，应该从程序的开始一步步的考虑是否有错误出现的可能。而不是一味的在自己想当然的点上寻找从而无谓的花费时间。提到这里也想起了另一个类似的问题，在处理数据的时候，一定一定要从数据的来源开始弄起，仔细了解数据的各方面，并且要记录所做处理每一步所用的参数和方法。不要等到最后的时候结果都有了发现数据有问题，到时候结果都有了但却都是无用功。勿谓言之不预也，请记住并在以后的学习中生活中时刻警醒自己，因为真的开始的时候方向错了，整个过程都就没有了意义。</p>
-<p>记于 2015年5月6日 00点38分</p>
+      		<h2 id="The_historical_development_of_the_magnetic_method_in_exploration(Nabighian_et_al-,_2005)">The historical development of the magnetic method in exploration(Nabighian et al., 2005)</h2><h3 id="重要事件线：">重要事件线：</h3><p>TIME LINE FOR MAGNETIC METHODS OF EXPLORATION<br><strong>1931</strong> 磁通门磁力仪（fluxgate magnetometer）<br><strong>1949</strong> 计算导数和解析延拓的卷积方法<br><strong>1955</strong> 质子磁力仪（proton precession magnetometer）<br><strong>1955</strong> Werner deconvolution for depth-estimation<br><strong>1957</strong> 化极以及磁源重力的计算（Baranov—Reduction-to-the-pole and<br>pseudogravity transformation）<br><strong>1958</strong> 采用傅里叶变换计算导数和解析延拓<br><strong>1962</strong> 光泵磁力仪（optically pumped magnetometers）<br><strong>1965</strong> Hood 航空梯度测量<br><strong>1965</strong> Hood 介绍了Euler deconvolution的概念<br><strong>1968</strong> IGRF建立<br><strong>1969</strong> Dampney 等效源技术的提出<br><strong>1972</strong> Nabighian 解析信号 Analytic Signal<br><strong>1972</strong> Syberg 位场数据延拓以及匹配滤波（<strong>matched filters</strong>）<br><strong>1974</strong> Briggs 最小曲率网格（Minimum curvature gridding）<br><strong>1975</strong> Zimmerman and Campbell - SQUID magnetometers<br><strong>1979</strong> 第一颗矢量磁测卫星MAGSAT发射<br><strong>1982</strong> Thompson 欧拉反褶积用于2D深度估计<br><strong>1984</strong> Lines and Treitel - 最小二乘反演技术<br><strong>1984</strong> Hardwick - 飞行器磁场补偿Compensation of aircraft magnetic field<br><strong>1984</strong> Nabighian - 3D Hilbert transforms<br><strong>1984</strong> Goupillaud et al. - Wavelet transforms for geophysical applications<br><strong>1985</strong> Grauch - 地形影响Magnetic terrain effects<br><strong>1990</strong> Reid et al.- 3D Euler deconvolution on gridded data sets<br><strong>1992</strong> Roest et al. - Total gradient<br><strong>1996</strong> Li and Oldenburg - 3D inversion of magnetic data<br><strong>1997</strong> Thurston and Smith— SPI (local wavenumber) technique<br><strong>1997</strong> Moreau et al. - Wavelet analysis of potential fields<br><strong>1998</strong> Archibald et al. - Multiscale edge analysis of potential field data<br><strong>2001</strong> Mushayandebvu et al. - Extended Euler deconvolution<br><strong>2001</strong> Nabighian and Hansen - Unification of Euler and Werner deconvolutions<br><strong>2002</strong> Hansen - Multisource Werner deconvolution/Multisource Euler deconvolution<br><strong>2002</strong> Comprehensive model (CM) proposed as replacement for IGRF<br><strong>2004</strong> Mushayandebvu et al.—Eigenvalue analysis for the 3D Euler equation</p>
+<h3 id="用途">用途</h3><p>铀矿的寻找：Joint aeromagnetic and gamma-ray surveys of U.S. for uranium exploration</p>
+<h3 id="杂记">杂记</h3><p>质子磁力仪将磁测敏感度(1 nT)提高到了0.01 nT，也就将航空磁测的误差主要由位置精度、航向误差、地磁场的日变和其它的外部因素决定。(e.g. Jensen, 1965)</p>
+<p>关于航空磁测：<br>Today, <strong>high-resolution aeromagnetic (HRAM)</strong> surveys are considered industry standard, <strong>although</strong> exactly what flight specifications constitute a high-resolution survey is <strong>ill defined</strong>. Typical exploration HRAM surveys have flight heights of 80–150 m and line spacings of 250–500 m (Millegan, 1998).</p>
+<p>关于地磁倒转和主磁场建模：<br>Furthermore, this field changes slowly with time and is believed to undergo collapse, often followed by reversal, on a time scale of <strong>100 000</strong> years or so.Understanding the history of <strong>reversals</strong>, both as a pattern over time and in terms of decay and rebuilding of the primary dipole field, is the focus of <strong>paleomagnetic studies</strong> [see Cox (1973) and McElhinny (1973) for excellent historical perspectives]</p>
+<p>关于磁法勘探的主体：<br>The remaining component of the earth’s field originates in iron-bearing rocks near the earth’s surface where temperatures are <strong>sufficiently low</strong>, i.e., less than about 580◦C (the Curie temperature of magnetite). This region is confined to the upper <strong>20–30 km</strong> of the crust. The crustal field, its relation to the distribution of magnetic minerals within the crust, and the information this relation provides about exploration targets are the primary subjects of the magnetic method in exploration.</p>
+<p>磁法勘探的用途：<br>Ground and airborne magnetic surveys are used at just about <strong>every conceivable scale</strong> and for a wide range of purposes. In exploration, they historically have been <strong>employed chiefly</strong> in the search for minerals. Regional and detailed magnetic surveys continue to be a primary mineral exploration tool in the search for diverse commodities, such as iron, base and precious metals, diamonds, molybdenum, and titanium.<br>Another economically important use of the magnetic method is the <strong>mapping of buried igneous bodies</strong>.</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/05/06/Nabighian et al. 2005/" style="float: left;">
-        ← The historical development of the magnetic method in exploration(Nabighian et al., 2005)
-    </a>
     
-    
-    <a class="pull-right" href="/2015/04/29/20150430/">
-        20150430 →
+    <a class="pull-right" href="/2015/05/06/20150505/">
+        20150505 →
     </a>
     
 </nav>
