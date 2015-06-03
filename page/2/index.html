@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>IversionMagneticV6.0 User&#39;s Guide | Star Phoenix</title>
+  <title>Star Phoenix</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -86,7 +86,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -239,173 +239,56 @@
         <!-- // End height spacing helper -->
 
         <!-- ============================ END Hero Image =========================== -->
-      
+      <!-- ============================ Content =========================== -->
+
 <section id="intro">
     <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2015-05-21T17:29:23.000Z" itemprop="datePublished">
-          2015-05-22
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2015/04/29/hello-world/">Hello World</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2015-04-29T14:06:42.877Z" itemprop="datePublished">
+          2015-04-29
       </time>
     
-    
-    | 
-    <a href='/tags/study/'>study</a>
-    
-    
 </span>
-                <h1>IversionMagneticV6.0 User's Guide</h1>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new p
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2015/04/29/hello-world/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<h2 id="IversionMagneticV6-0_User’s_Guide">IversionMagneticV6.0 User’s Guide</h2><h3 id="About">About</h3><p>该程序目前版本为6.0.1版本，主要功能是实现总场异常数据$\Delta T$的三维（或二度半）反演。</p>
-<ul>
-<li>可以实现的主要功能包括：</li>
-</ul>
-<ol>
-<li>采用广义交叉验证方法( Generalized cross validation, GCV) <strong>自动</strong>计算本次反演所采用的理论最优正则化参数</li>
-<li>可以加入多种约束，包括参考模型初始模型最大最小模型、空间加权函数（包括选择差分方向）等</li>
-<li>可以进行混合范数反演</li>
-<li>可以考虑地形起伏</li>
-</ol>
-<ul>
-<li>待改进的地方：</li>
-</ul>
-<ol>
-<li>深度加权函数没有可操作性</li>
-<li>长度归没有可操作性</li>
-<li>（有待进一步发现）</li>
-</ol>
-<h3 id="使用说明">使用说明</h3><p>主要内容为读入文件中所包含参数的说明，其中会将需要注意的地方会一起呈现。</p>
-<h4 id="本程序所需要读入的文件名为：">本程序所需要读入的文件名为：</h4><blockquote>
-<p><strong>para_mag6.0.dat</strong> （不可修改）</p>
-</blockquote>
-<p>该文件中包含了所有反演中需要用到的信息，详细内容如下（举例）：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Please_input_the_[observed_data]_file:</span></span><br><span class="line">result_deltaT.dat</span><br><span class="line"><span class="comment">//Please_input_the_[mesh]_file:</span></span><br><span class="line">mesh31_31_10.txt</span><br><span class="line"><span class="comment">//Please_input_the_[alpha-s_-x_-y_-z]:</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_U_need_[GCV]_to_calculate_the_best_regularization</span></span><br><span class="line"><span class="comment">//parameter_or_not:_(1_for_YES;_0_for_NO;_and_this_rule_is_the_same_with_others)</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_[Inclination]_[Declination]_and_[Intensity]_of_the_inducing_field:</span></span><br><span class="line"><span class="number">45</span> <span class="number">10</span> <span class="number">57000</span></span><br><span class="line"><span class="comment">//Please_input_the_assumed_[Inclination]_[Declination]_of_the_magnetization_direction_of_source:</span></span><br><span class="line"><span class="number">45</span> <span class="number">10</span></span><br><span class="line"><span class="comment">//Please_input_the_[beta_value]_of_the_depth_weighting_function</span></span><br><span class="line"><span class="comment">//and_[regularization_parameter]_for_this_inversion:</span></span><br><span class="line"><span class="number">3.3</span></span><br><span class="line"><span class="number">7.9</span></span><br><span class="line"><span class="comment">//Please_input_the_[_reference_model]_[origin_model]_[minimum_model]_[maximum_model]</span></span><br><span class="line"><span class="number">0</span> <span class="number">0.001</span> <span class="number">0</span> <span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_[parameter]_whether_using_a_spatial_weighting_function_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">result_spatial_weight_xy.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[mixed_norm_function]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">norm4.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_reference_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ref_data.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_origin_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ori_data.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_minimum_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">min_model.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_maximum_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">max_model.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_to_make_sure_that_[the_topography_is_flat_or_not]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">topo20141123.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_to_make_sure_that_[the_efficient_storage_of_sensitivity_matrix_is_used_or_not]:</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="每个参数及文件的详细使用说明">每个参数及文件的详细使用说明</h4><ul>
-<li><p>观测数据 result_deltaT.dat</p>
-<blockquote>
-<p>num_pts<br>y_pos x_pos z_pos obs_data obs_err<br>…<br>(num_pts-2)<br>…<br>y_pos x_pos z_pos obs_data obs_err</p>
-</blockquote>
-<p>  其中，num_pts为观测数据总个数；(y_pos,x_pos,z_pos)分别为为观测点东西向、南北向、深度方向上的坐标，需要注意的一点是，深度方向向上为正；obs_data和obs_err分别为观测数据值和误差项，该误差项的确定可以采用异常场幅值变化范围的3~5%，也可以根据如下原则（Williams, 2008）：</p>
-<blockquote>
-<p><strong>Ground gravity data</strong>: Use best Bouguer and terrain corrected data (in mGal) with uncertainty ~ 0.03 to 0.07 mGal<br>  <strong>Aeromagnetic data</strong>: Advisable to subtract the mean TMI value (in nT) and use uncertainty ~ 5 % TMI + 5 nT.</p>
-</blockquote>
-</li>
-<li><p>网格数据 mesh.txt</p>
-<blockquote>
-<p>ynum xnum znum<br>ystart xstart zstart<br>ynum <em> ylength<br>xnum </em> xlength<br>znum * zlength<br>  其中，所有量的x y z分别代表南北向、东西向、深度方向上的量。容易理解，在此不做详细介绍。</p>
-</blockquote>
-</li>
-<li><p>全局最小模型和光滑模型相对权值（长度规）</p>
-<blockquote>
-<p>$\alpha_s\ \alpha_x\ \alpha_y\ \alpha_z$</p>
-</blockquote>
-</li>
-<li><p>GCV自动计算最优正则化参数选择</p>
-<blockquote>
-<p>0 || 1<br>  1 ：会将计算过程中采用的正则化参数和GCV函数值保存在文件 <strong>result_test_gcv_pre</strong> 中，并且本次反演采用曲线拟合得到的最优正则化参数来进行计算，与后面的正则化参数设置无关，会在后面介绍；<br>  0 ：不进行相关GCV计算，正则化参数采用后面设置的固定值。</p>
-</blockquote>
-</li>
-<li><p>正常场（或称为 背景场、激发场）的倾角、偏角、强度</p>
-<blockquote>
-<p>I0 D0 T0</p>
-</blockquote>
-</li>
-<li><p>磁性体假设的 倾角、偏角</p>
-<blockquote>
-<p>I D</p>
-</blockquote>
-</li>
-<li><p>确定深度加权的衰减系数 以及 拟采用的固定正则化参数</p>
-<blockquote>
-<p>beta<br>regularization parameter</p>
-</blockquote>
-</li>
-<li><p>固定的初始模型、参考模型、最小模型、最大模型</p>
-<blockquote>
-<p>ori ref min max</p>
-</blockquote>
-<p>  针对无任何约束时整个反演区域在上面四项中均全部采用相同物性值的情况。</p>
-</li>
-<li><p>是否采用空间加权以及加权文件名</p>
-<blockquote>
-<p>0 || 1<br>result_spatial_weight_xy.dat (名称随意，具体格式不做介绍。)</p>
-</blockquote>
-</li>
-<li><p>是否采用混合范数反演以及相关文件名</p>
-<blockquote>
-<p>0 || 1<br>norm4.dat (名称随意，具体格式不做介绍。)</p>
-</blockquote>
-</li>
-<li><p>是否采用不均一参考模型以及相关文件名</p>
-<blockquote>
-<p>0 || 1<br>ref_data.dat (名称随意，具体格式不做介绍。)</p>
-</blockquote>
-</li>
-<li>是否采用不均一初始模型以及相关文件名<blockquote>
-<p>0 || 1<br>ori_data.dat (名称随意，具体格式不做介绍。)</p>
-</blockquote>
-</li>
-<li>是否采用不均一最小模型以及相关文件名<blockquote>
-<p>0 || 1<br>min_model.dat (名称随意，具体格式不做介绍。)</p>
-</blockquote>
-</li>
-<li><p>是否采用不均一最大模型以及相关文件名</p>
-<blockquote>
-<p>0 || 1<br>max_model.dat (名称随意，具体格式不做介绍。)</p>
-</blockquote>
-</li>
-<li><p>是否考虑地形起伏以及相关文件名</p>
-<blockquote>
-<p>0 || 1<br>topo20141123.dat (名称随意，具体格式不做介绍。)<br>  考虑地形起伏时，需要注意一点，就是观测数据点必须全部位于该地形面以上</p>
-</blockquote>
-</li>
-<li><p>是否采用有效存储的方式保存核矩阵以及相关文件名</p>
-<blockquote>
-<p>0 || 1</p>
-</blockquote>
-<p>  0：常规反演<br>  1：有效存储仅仅适用于平坦地形的情况，程序中有判断，如果考虑地形起伏处选择为1，则该处无论填0或1，都会被强制赋予0值！并且计算效率会大大降低，粗略估计降速10倍左右（在模型单元剖分为31<em>31</em>10的情况），如果计算设备内存够用就不要使用等效存储。</p>
-</li>
-</ul>
-<p><strong>附注1</strong>：对于上述几个可选择是否加入的约束或模型，如果选择0的话，当前目录下有没有该文件均可；如果选择为1的话，必须存在与该参数表中相同的文件名，并且格式要完全正确才能使用。<br><strong>附注2</strong>：仅仅更改相关参数即可，万万不可随意改动相关注释内容，如删掉整行，添加文字，随意添加不合要求的参数等。</p>
-<p>$$Edited\ by\ Shida\ Sun,\ 01:18\ May\ 22,\ 2015,\ K_{now}^{forever}$$</p>
-
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
+        
         <nav class="pagination" role="pagination">
-    
-    <a class="pull-left" href="/2015/05/27/20150527-2区域地质背景/" style="float: left;">
-        ← 20150527-2区域地质背景
-    </a>
-    
-    
-    <a class="pull-right" href="/2015/05/17/20150517-About_Euler_deconvolution_and_other_methods/">
-        About Euler deconvolution and other methods →
-    </a>
-    
-</nav>
-
-        <div class="duoshuo">
-
-
- <div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'kiciollo';
-    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div>
+          <a class="pull-left" href="/">← Newer Posts</a>
+          
+        </nav>
     </div>
 </section>
-
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>And There is more to life than increasing its speed.</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
 
       
 <!-- ============================ Footer =========================== -->
