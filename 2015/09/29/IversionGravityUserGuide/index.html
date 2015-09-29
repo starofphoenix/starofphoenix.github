@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>IversionMagneticV6.0 User&#39;s Guide | Star Phoenix</title>
+  <title>IversionGravityV8.2 User&#39;s Guide | Star Phoenix</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -247,21 +247,23 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2015-05-21T17:29:23.000Z" itemprop="datePublished">
-          2015-05-22
+      <time datetime="2015-09-29T03:27:06.000Z" itemprop="datePublished">
+          2015-09-29
       </time>
     
     
     | 
+    <a href='/tags/life/'>life</a>,
+    
     <a href='/tags/study/'>study</a>
     
     
 </span>
-                <h1>IversionMagneticV6.0 User's Guide</h1>
+                <h1>IversionGravityV8.2 User's Guide</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="IversionMagneticV6-0_User’s_Guide">IversionMagneticV6.0 User’s Guide</h2><h3 id="About">About</h3><p>该程序目前版本为6.0.1版本，主要功能是实现总场异常数据$\Delta T$的三维（或二度半）反演。</p>
+      		<h2 id="IversionMagneticV8-2_User’s_Guide">IversionMagneticV8.2 User’s Guide</h2><h3 id="About">About</h3><p>该程序目前版本为8.2版本，功能为多种物性约束条件下的多参量重力数据（联合）反演。</p>
 <ul>
 <li>可以实现的主要功能包括：</li>
 </ul>
@@ -270,6 +272,8 @@
 <li>可以加入多种约束，包括参考模型初始模型最大最小模型、空间加权函数（包括选择差分方向）等</li>
 <li>可以进行混合范数反演</li>
 <li>可以考虑地形起伏</li>
+<li>对于平坦地形及平坦观测面，可以采用有效存储的方式来缓解内存压力，但是所付出的代价就是计算速度会有一定程度的减慢</li>
+<li>添加了多种物性约束方法（共有4种），包括强制约束、对数障碍法、基于Barbosa(1999)的对数变化法以及张毅师兄采用的乘子法</li>
 </ol>
 <ul>
 <li>待改进的地方：</li>
@@ -277,18 +281,22 @@
 <ol>
 <li>深度加权函数没有可操作性</li>
 <li>长度归没有可操作性</li>
-<li>（有待进一步发现）</li>
+<li>四种物性约束方法中，采用有效存储的方式计算反演结果时，目前只能采用对数障碍法，其他的方法仍需后续工作加入，该需求目前并不迫切的原因是因为有效存储的使用需求不大，而且当地形是起伏的时候，有效存储的思想就会报废</li>
+<li>将该套思路全盘移动到磁法数据的反演中（目前该思想仅在重力方面完美实现，并未移植）</li>
 </ol>
 <h3 id="使用说明">使用说明</h3><p>主要内容为读入文件中所包含参数的说明，其中会将需要注意的地方会一起呈现。</p>
 <h4 id="本程序所需要读入的文件名为：">本程序所需要读入的文件名为：</h4><blockquote>
-<p><strong>para_mag6.0.dat</strong> （不可修改）</p>
+<p><strong>para_gra8.2.dat</strong> （不可修改）</p>
 </blockquote>
-<p>该文件中包含了所有反演中需要用到的信息，详细内容如下（举例）：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Please_input_the_[observed_data]_file:</span></span><br><span class="line">result_deltaT.dat</span><br><span class="line"><span class="comment">//Please_input_the_[mesh]_file:</span></span><br><span class="line">mesh31_31_10.txt</span><br><span class="line"><span class="comment">//Please_input_the_[alpha-s_-x_-y_-z]:</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_U_need_[GCV]_to_calculate_the_best_regularization</span></span><br><span class="line"><span class="comment">//parameter_or_not:_(1_for_YES;_0_for_NO;_and_this_rule_is_the_same_with_others)</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_[Inclination]_[Declination]_and_[Intensity]_of_the_inducing_field:</span></span><br><span class="line"><span class="number">45</span> <span class="number">10</span> <span class="number">57000</span></span><br><span class="line"><span class="comment">//Please_input_the_assumed_[Inclination]_[Declination]_of_the_magnetization_direction_of_source:</span></span><br><span class="line"><span class="number">45</span> <span class="number">10</span></span><br><span class="line"><span class="comment">//Please_input_the_[beta_value]_of_the_depth_weighting_function</span></span><br><span class="line"><span class="comment">//and_[regularization_parameter]_for_this_inversion:</span></span><br><span class="line"><span class="number">3.3</span></span><br><span class="line"><span class="number">7.9</span></span><br><span class="line"><span class="comment">//Please_input_the_[_reference_model]_[origin_model]_[minimum_model]_[maximum_model]</span></span><br><span class="line"><span class="number">0</span> <span class="number">0.001</span> <span class="number">0</span> <span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_[parameter]_whether_using_a_spatial_weighting_function_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">result_spatial_weight_xy.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[mixed_norm_function]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">norm4.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_reference_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ref_data.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_origin_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ori_data.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_minimum_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">min_model.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_maximum_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">max_model.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_to_make_sure_that_[the_topography_is_flat_or_not]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">topo20141123.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_to_make_sure_that_[the_efficient_storage_of_sensitivity_matrix_is_used_or_not]:</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>该文件中包含了所有反演中需要用到的信息，详细内容如下（举例）：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Please_input_the_data_type_will_be_inverted</span></span><br><span class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"><span class="comment">//Please_input_the_[observed_data]_file:</span></span><br><span class="line">result_grav.dat</span><br><span class="line"><span class="comment">//Please_input_the_[mesh]_file:</span></span><br><span class="line">mesh31_31_15.txt</span><br><span class="line"><span class="comment">//Please_input_the_[alpha-s_-x_-y_-z]:</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_U_need_[GCV]_to_calculate_the_best_regularization</span></span><br><span class="line"><span class="comment">//parameter_or_not:_(1_for_YES;_0_for_NO;_and_this_rule_is_the_same_with_others)</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="comment">//Please_input_the_[TYPE]_of_the_depth_weighting_function(1_for_1998_usual_weighting_and_2_for_2000_based_on_sensitivity)</span></span><br><span class="line"><span class="comment">//and_[uniform_altitude(z0_upward_negative)]_for_1:</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">-<span class="number">0.1</span></span><br><span class="line"><span class="comment">//Please_input_the_[beta_value]_of_the_depth_weighting_function</span></span><br><span class="line"><span class="comment">//and_[regularization_parameter]_for_this_inversion:</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3.6</span></span><br><span class="line"><span class="comment">//Please_input_the_parameter_which_bound_constrained_method_you_choosed</span></span><br><span class="line"><span class="comment">//Please_input_the_bound_constrained_FILE_WHEN_U_use_method_4</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">m_boundconstrain.dat</span><br><span class="line"><span class="comment">//Please_input_the_[reference_model]_[origin_model]_[minimum_model]_[maximum_model]</span></span><br><span class="line"><span class="number">0</span> <span class="number">0.001</span> <span class="number">0</span> <span class="number">1</span></span><br><span class="line"><span class="comment">//Please_input_the_[parameter]_whether_using_a_spatial_weighting_function_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">result_spatial_weight_xy.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[mixed_norm_function]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">norm4.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_reference_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ref_data.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_origin_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ori_data.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_minimum_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">m_min_n.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_whether_using_a_[non_uniform_maximum_model]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">m_max_n.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_to_make_sure_that_[the_topography_is_flat_or_not]_and_[the_file's_name]:</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">topo_500.dat</span><br><span class="line"><span class="comment">//Please_input_the_parameter_to_make_sure_that_[the_efficient_storage_of_sensitivity_matrix_is_used_or_not]:</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="每个参数及文件的详细使用说明">每个参数及文件的详细使用说明</h4><ul>
-<li><p>观测数据 result_deltaT.dat</p>
+<li><p>确定所需进行反演的数据类型</p>
 <blockquote>
-<p>num_pts<br>y_pos x_pos z_pos obs_data obs_err<br>…<br>(num_pts-2)<br>…<br>y_pos x_pos z_pos obs_data obs_err</p>
+<p>1 1 1 1 1 1 1<br>分别对应六种类型数据：重力异常$V<em>{z}$，重力梯度张量的6个分量$V</em>{xx}\ V<em>{xy}\ V</em>{xz}\ V<em>{yy}\ V</em>{yz}\ V_{zz}$</p>
 </blockquote>
+</li>
+<li><p>观测数据 result_deltaT.dat</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">num_pts </span><br><span class="line">y_pos x_pos z_pos obs_data obs_err</span><br><span class="line">...</span><br><span class="line">(num_pts-<span class="number">2</span>)</span><br><span class="line">...</span><br><span class="line">y_pos x_pos z_pos obs_data obs_err</span><br></pre></td></tr></table></figure>
 <p>  其中，num_pts为观测数据总个数；(y_pos,x_pos,z_pos)分别为为观测点东西向、南北向、深度方向上的坐标，需要注意的一点是，深度方向向上为正；obs_data和obs_err分别为观测数据值和误差项，该误差项的确定可以采用异常场幅值变化范围的3~5%，也可以根据如下原则（Williams, 2008）：</p>
 <blockquote>
 <p><strong>Ground gravity data</strong>: Use best Bouguer and terrain corrected data (in mGal) with uncertainty ~ 0.03 to 0.07 mGal<br>  <strong>Aeromagnetic data</strong>: Advisable to subtract the mean TMI value (in nT) and use uncertainty ~ 5 % TMI + 5 nT.</p>
@@ -296,7 +304,7 @@
 </li>
 <li><p>网格数据 mesh.txt</p>
 <blockquote>
-<p>ynum xnum znum<br>ystart xstart zstart<br>ynum <em> ylength<br>xnum </em> xlength<br>znum * zlength<br>  其中，所有量的x y z分别代表南北向、东西向、深度方向上的量。容易理解，在此不做详细介绍。</p>
+<p>ynum xnum znum<br>ystart xstart zstart<br>ynum <em> ylength<br>xnum </em> xlength<br>znum * zlength<br>  其中，所有量的x y z分别代表南北向、东西向、深度方向上的量（向上为正）。容易理解，在此不做详细介绍。</p>
 </blockquote>
 </li>
 <li><p>全局最小模型和光滑模型相对权值（长度规）</p>
@@ -309,14 +317,9 @@
 <p>0 || 1<br>  1 ：会将计算过程中采用的正则化参数和GCV函数值保存在文件 <strong>result_test_gcv_pre</strong> 中，并且本次反演采用曲线拟合得到的最优正则化参数来进行计算，与后面的正则化参数设置无关，会在后面介绍；<br>  0 ：不进行相关GCV计算，正则化参数采用后面设置的固定值。</p>
 </blockquote>
 </li>
-<li><p>正常场（或称为 背景场、激发场）的倾角、偏角、强度</p>
+<li><p>确定深度加权函数的类型 以及 观测面的高度（如果无起伏）</p>
 <blockquote>
-<p>I0 D0 T0</p>
-</blockquote>
-</li>
-<li><p>磁性体假设的 倾角、偏角</p>
-<blockquote>
-<p>I D</p>
+<p>1 || 2<br>  1 ：普通深度加权(Li and Oldenburg, 1996)<br>  2 : 基于敏感度矩阵的深度加权(Li and Oldenburg, 2003)<br>z0_upward_negative (向上为负)</p>
 </blockquote>
 </li>
 <li><p>确定深度加权的衰减系数 以及 拟采用的固定正则化参数</p>
@@ -324,38 +327,53 @@
 <p>beta<br>regularization parameter</p>
 </blockquote>
 </li>
+<li><p>确定物性约束实现的方法 以及 采用乘子法时需要读入的文件名</p>
+<blockquote>
+<p>1 || 2 || 3 || 4</p>
+</blockquote>
+<p>  1 : 强制物性约束<br>  2 ：对数障碍法(Li and Oldenburg, 2003)<br>  3 : 对数变化法(Barbosa et al., 1999)<br>  4 : 乘子法(Zhang et al., 2014)</p>
+</li>
+</ul>
+<blockquote>
+<p>m_boundconstrain.dat(名称随意，格式如下)</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">F0 m_equ_0 F1 m_min_n F2 m_max_n</span><br><span class="line">...</span><br><span class="line">(num_mod-<span class="number">2</span>)</span><br><span class="line">...</span><br><span class="line">F0 m_equ_0 F1 m_min_n F2 m_max_n</span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>固定的初始模型、参考模型、最小模型、最大模型</p>
 <blockquote>
-<p>ori ref min max</p>
+<p>ori ref min max<br>  针对无任何约束时整个反演区域在上面四项中均全部采用相同物性值的情况。</p>
 </blockquote>
-<p>  针对无任何约束时整个反演区域在上面四项中均全部采用相同物性值的情况。</p>
 </li>
 <li><p>是否采用空间加权以及加权文件名</p>
 <blockquote>
-<p>0 || 1<br>result_spatial_weight_xy.dat (名称随意，具体格式不做介绍。)</p>
+<p>0 || 1<br>result_spatial_weight_xy.dat (名称随意，具体格式如下，共七列)</p>
 </blockquote>
 </li>
-<li><p>是否采用混合范数反演以及相关文件名</p>
-<blockquote>
-<p>0 || 1<br>norm4.dat (名称随意，具体格式不做介绍。)</p>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">msf_s msf_x msf_xdiffdrct msf_y msf_ydiffdrct msf_z msf_zdiffdrct</span><br><span class="line">...</span><br><span class="line">(num_mod-<span class="number">2</span>)</span><br><span class="line">...</span><br><span class="line">msf_s msf_x msf_xdiffdrct msf_y msf_ydiffdrct msf_z msf_zdiffdrct</span><br><span class="line"><span class="comment">//其中，msf_x为空间加权值，msf_xdiffdrct确定加权的方向，是前向差分（0）还是后向差分（1）</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>是否采用混合范数反演以及相关文件名<blockquote>
+<p>0 || 1<br>norm4.dat (名称随意，具体格式如下，共十列)</p>
 </blockquote>
 </li>
-<li><p>是否采用不均一参考模型以及相关文件名</p>
-<blockquote>
-<p>0 || 1<br>ref_data.dat (名称随意，具体格式不做介绍。)</p>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p1 epsilon1 p2 epsilon2 px2 epsilonx2 py2 epsilony2 pz2 epsilonz2 </span><br><span class="line">...</span><br><span class="line">(num_mod-<span class="number">2</span>)</span><br><span class="line">...</span><br><span class="line">p1 epsilon1 p2 epsilon2 px2 epsilonx2 py2 epsilony2 pz2 epsilonz2 </span><br><span class="line"><span class="comment">// $(x^2+\epsilon^2)^(p/2)$</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>是否采用不均一参考模型以及相关文件名<blockquote>
+<p>0 || 1<br>ref_data.dat (名称随意，具体格式不做介绍，为单列数据)</p>
 </blockquote>
 </li>
 <li>是否采用不均一初始模型以及相关文件名<blockquote>
-<p>0 || 1<br>ori_data.dat (名称随意，具体格式不做介绍。)</p>
+<p>0 || 1<br>ori_data.dat (名称随意，具体格式不做介绍，为单列数据)</p>
 </blockquote>
 </li>
 <li>是否采用不均一最小模型以及相关文件名<blockquote>
-<p>0 || 1<br>min_model.dat (名称随意，具体格式不做介绍。)</p>
+<p>0 || 1<br>min_model.dat (名称随意，具体格式不做介绍，为单列数据)</p>
 </blockquote>
 </li>
 <li><p>是否采用不均一最大模型以及相关文件名</p>
 <blockquote>
-<p>0 || 1<br>max_model.dat (名称随意，具体格式不做介绍。)</p>
+<p>0 || 1<br>max_model.dat (名称随意，具体格式不做介绍，为单列数据)</p>
 </blockquote>
 </li>
 <li><p>是否考虑地形起伏以及相关文件名</p>
@@ -371,20 +389,16 @@
 </li>
 </ul>
 <p><strong>附注1</strong>：对于上述几个可选择是否加入的约束或模型，如果选择0的话，当前目录下有没有该文件均可；如果选择为1的话，必须存在与该参数表中相同的文件名，并且格式要完全正确才能使用。<br><strong>附注2</strong>：仅仅更改相关参数即可，万万不可随意改动相关注释内容，如删掉整行，添加文字，随意添加不合要求的参数等。</p>
-<p>$$Edited\ by\ Shida\ Sun,\ 01:18\ May\ 22,\ 2015,\ K_{now}^{forever}$$</p>
+<p>$$Edited\ by\ Shida\ Sun,\ 11:25\ Nov\ 29,\ 2015,\ K_{now}^{forever}$$</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/05/27/20150527-2区域地质背景/" style="float: left;">
-        ← 20150527-2区域地质背景
-    </a>
     
-    
-    <a class="pull-right" href="/2015/05/17/20150517-About_Euler_deconvolution_and_other_methods/">
-        About Euler deconvolution and other methods →
+    <a class="pull-right" href="/2015/09/20/20150921-Ubuntu 14.04 安装及使用Intel Parallel Studio的过程说明/">
+        Ubuntu 14.04 安装及使用Intel Parallel Studio的过程说明 →
     </a>
     
 </nav>
